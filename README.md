@@ -45,7 +45,7 @@ iterator erase (const_iterator first, const_iterator last);
 void clear() noexcept;
 
 // swap content. like vector1 <-> vector2
-void swap (vector& x);
+void swap (vector& x); 
 
 ```
 
