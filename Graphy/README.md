@@ -1,1 +1,83 @@
+### 并查集 (UnionFind)
 
+##### 1. Quick Find
+
+时间复杂度O(1).  a[i] = rootNode. 保存根节点. 因此需要在Union的时候对比根节点.
+
+```c++
+class UnionFind() {
+  public:
+  	vector<int> root;
+  public:
+    UnionFind(int size) {
+      for (int i = 0; i < size; i++) {
+        root[i] = i;
+      }
+    }
+  
+    int find(int x) {
+      return root[x];
+    }
+  
+  	void union(int x, int y) {
+      // 如果没有根节点,默认x为根节点
+      int rootX = find(x);
+      int rootY = find(y);
+      if (rootX != root) {
+        for (int i = 0; i < root.size();i++){
+          if (root[i] == rootY) {
+            root[i] = rootX;
+          }
+        }
+      }
+      bool connented(x, y) {
+        return root[x] == root[y];
+      }
+}
+```
+
+##### 2. Quick Union
+
+union(x, y)
+
+a[y] = a[x] => parentNode
+
+```c++
+class UnionFind {
+	public:
+  	vector<int> root;
+  public:
+  	UnionFind(size) {
+      for (int i = 0; i < size; i++) {
+        root[i] = i;
+      }
+    }
+  	
+  	int find(x) {
+      if (x == root[x]) return x;
+      else return find(root[x]);
+    }
+  
+  	int union(x, y) {
+      int rootX = find(x);
+      int rootY = find(y);
+      if (rootX != rootY) {
+        // 即x，y的父节点不相等的情况下，将y的父节点对应的根节点置为x的根节点值
+        root[rootY] = rootX;
+    }
+     
+     bool connented(x, y) {
+        return root[x] == root[y];
+     }
+}
+```
+
+#### 3. 按zhi
+
+### 图论的DFS和BFS算法
+
+### 最小生成树
+
+### 最短路径
+
+### 拓扑排序
