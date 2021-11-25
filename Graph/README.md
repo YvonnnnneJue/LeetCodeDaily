@@ -1,5 +1,19 @@
 ### 并查集 (UnionFind)
 
+并查集代码基本结构
+
+```c++
+class UnionFind {
+  public:
+  	vector<int> root;
+  	UnionFind(int size){}
+  	void union(int x, int y){}
+  	boolean connected(int x, int y){}
+}
+```
+
+
+
 ##### 1. Quick Find
 
 时间复杂度O(1).  a[i] = rootNode. 保存根节点. 因此需要在Union的时候对比根节点.
@@ -72,7 +86,7 @@ class UnionFind {
 }
 ```
 
-#### 3. 按zhi
+#### 3. 按秩合并优化
 
 ### 图论的DFS和BFS算法
 
