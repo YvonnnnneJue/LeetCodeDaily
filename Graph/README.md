@@ -23,6 +23,7 @@ class UnionFind() {
   public:
   	vector<int> root;
   public:
+    root.resize(size, 0);
     UnionFind(int size) {
       for (int i = 0; i < size; i++) {
         root[i] = i;
@@ -62,6 +63,7 @@ class UnionFind {
   	vector<int> root;
   public:
   	UnionFind(size) {
+      root.resize(size, 0);
       for (int i = 0; i < size; i++) {
         root[i] = i;
       }
@@ -92,7 +94,43 @@ class UnionFind {
 
 #### 4. 压缩路径
 
-找到根节点之后，将所有遍历过的元素的父节点都改成根节点. 对find() 优化
+找到根节点之后，将所有遍历过的元素的父节点都改成根节点. 对find() 优化. 通过递归. 就root[x] = find(root[x])
+
+```c++
+// UnionFind.class
+class UnionFind {
+  public:
+    vector<int> root;
+
+    UnionFind(int size) {
+        root.resize(size, 0);
+        for (int i = 0; i < size; i++) {
+            root[i] = i;
+        }
+    }
+
+    int find(int x) {
+        if (x == root[x]) {
+            return x;
+        }
+        return root[x] = find(root[x]);
+    }
+
+    void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+            root[rootY] = rootX;
+        }
+    };
+
+   boolean connected(int x, int y) {
+        return find(x) == find(y);
+    }
+}
+```
+
+
 
 ### 图论的DFS和BFS算法
 
