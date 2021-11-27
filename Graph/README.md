@@ -92,6 +92,37 @@ class UnionFind {
 
 选用树层最高的为根节点.将低的树,合并到高的树之下. 对union() 优化.
 
+```c++
+int root[];
+int rank[];
+
+UnionFind(int size) {
+    root = new int[size];
+    rank = new int[size];
+    for (int i = 0; i < size; i++) {
+        root[i] = i;
+        rank[i] = 1; 
+    }
+}
+void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+          // 比较秩
+            if (rank[rootX] > rank[rootY]) {
+                root[rootY] = rootX;
+            } else if (rank[rootX] < rank[rootY]) {
+                root[rootX] = rootY;
+            } else {
+                root[rootY] = rootX;
+                rank[rootX] += 1;
+            }
+        }
+    };
+```
+
+
+
 #### 4. 压缩路径
 
 找到根节点之后，将所有遍历过的元素的父节点都改成根节点. 对find() 优化. 通过递归. 就root[x] = find(root[x])
