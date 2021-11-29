@@ -49,5 +49,17 @@ void swap (vector& x);
 
 ```
 
+```c++
+排序一个vector: nums = [[1,1,2], [2,3,5]]
+sort(nums.begin(), nums.end(), [&](auto& a, auto& b) {
+  return a[0] < b[1] // 从小到大
+});
+
+void iota( ForwardIterator first,ForwardIterator last, T value );
+// 用顺序递增的值赋值指定范围内的元素
+std::iota(foo.begin(), foo.end(), 0);// 将从 0 开始的 n 次递增值赋值给 foo
+// out: 0 1 2 3 .... 15
+```
+
 
 

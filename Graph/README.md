@@ -1,3 +1,44 @@
+### 图的遍历
+
+多叉树的遍历
+
+```c++
+/* 多叉树遍历框架 */
+void traverse(TreeNode* root) {
+    if (root == nullptr) return;
+
+    for (TreeNode* child : root->children)
+        traverse(child);
+}
+
+```
+
+图的遍历中,可能包含环.需要利用visited数组辅助
+
+```c++
+vector<bool> visited
+
+/* 图遍历框架 */
+void traverse(Graph graph, int s) {
+    if (visited[s]) return;
+    // 经过节点 s
+    visited[s] = true;
+    for (int neighbor : graph->neighbors(s))
+        traverse(graph, neighbor);
+    // 离开节点 s
+    visited[s] = false;   
+}
+
+```
+
+
+
+
+
+
+
+
+
 ### 并查集 (UnionFind)
 
 并查集代码基本结构
@@ -19,7 +60,7 @@ class UnionFind {
 时间复杂度O(1).  a[i] = rootNode. 保存根节点. 因此需要在Union的时候对比根节点.
 
 ```c++
-class UnionFind() {
+class UnionFind {
   public:
   	vector<int> root;
   public:
@@ -119,6 +160,22 @@ void union(int x, int y) {
             }
         }
     };
+
+优化
+====>
+// 以x作为为节点
+void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+          // 比较秩
+          if (rank[rootX] < rank[rootY) {
+            swap(rootX, rootY);
+          }
+          root[rootY] = rootX;
+          if (rank[rootX] == rank[rootY]) rank[rootX] += 1;
+        }
+    };
 ```
 
 
@@ -128,37 +185,12 @@ void union(int x, int y) {
 找到根节点之后，将所有遍历过的元素的父节点都改成根节点. 对find() 优化. 通过递归. 就root[x] = find(root[x])
 
 ```c++
-// UnionFind.class
-class UnionFind {
-  public:
-    vector<int> root;
-
-    UnionFind(int size) {
-        root.resize(size, 0);
-        for (int i = 0; i < size; i++) {
-            root[i] = i;
-        }
-    }
-
     int find(int x) {
         if (x == root[x]) {
             return x;
         }
-        return root[x] = find(root[x]);
+        return root[x] = find(root[x]); // 压缩路径
     }
-
-    void union(int x, int y) {
-        int rootX = find(x);
-        int rootY = find(y);
-        if (rootX != rootY) {
-            root[rootY] = rootX;
-        }
-    };
-
-   boolean connected(int x, int y) {
-        return find(x) == find(y);
-    }
-}
 ```
 
 
