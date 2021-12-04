@@ -6,13 +6,7 @@
 
 ```c++
 // initialize
-vector<int> res; 
-
-vector<int> res(n); 
-
-vector<int> res{1,2,3};
-
-vector<vector<int> >dp; 
+vector<int> res; vector<int> res(n); vector<int> res{1,2,3};vector<vector<int> >dp; 
 
 /**
 *	member function
@@ -63,3 +57,24 @@ std::iota(foo.begin(), foo.end(), 0);// 将从 0 开始的 n 次递增值赋值�
 
 
 
+#### 判断数字和文字以及大小写转换
+
+<cctype>头文件.
+
+1. isalpha(), 判断是否为字母, 
+
+```c++
+cout<<isalpha('a'); //返回非零
+cout<<isalpha('2'); //返回0
+```
+
+2. isalnum, 判断是否为字母或者数字
+
+```c++
+cout<<isalnum('a'); //输出非零
+cout<<isalnum('2'); // 非零
+cout<<isalnum('.'); // 零
+```
+
+3. islower(), 判断是否小写 issupper(). 判断是否大写
+4. tolower, toupper
