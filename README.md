@@ -2,7 +2,7 @@
 
 ### C++ 语言基础:
 
-#### 1. 动态数组类型 vector
+#### 1. vector
 
 ```c++
 // initialize
@@ -41,9 +41,6 @@ void clear() noexcept;
 // swap content. like vector1 <-> vector2
 void swap (vector& x); 
 
-```
-
-```c++
 排序一个vector: nums = [[1,1,2], [2,3,5]]
 sort(nums.begin(), nums.end(), [&](auto& a, auto& b) {
   return a[0] < b[1] // 从小到大
@@ -53,6 +50,39 @@ void iota( ForwardIterator first,ForwardIterator last, T value );
 // 用顺序递增的值赋值指定范围内的元素
 std::iota(foo.begin(), foo.end(), 0);// 将从 0 开始的 n 次递增值赋值给 foo
 // out: 0 1 2 3 .... 15
+```
+
+#### 2. string
+
+```c++
+1. size()
+2. empty()
+3. push_back() // 尾部插入一个元素
+4. pop_back() // 删除尾部元素
+5. substr(pos, len) // 从索引pos开始, 长度为len的子字符串
+```
+
+#### 3. 哈希表,unordered_map
+
+{ key: value }, 一般使用int 或者 string 作为key;
+
+```c++
+1. count(key) // 返回哈希表中key出现的次数,但哈希表中不会出现重复的键,可以用于判断key是否存在
+2. erase(key) // 通过key清除哈希表的键值对
+unordered_map<int, int> counter;  
+//  遍历:
+for (auto& it : counter) {
+  int key = it.first;
+  int val - it.second;
+  cout << key << " " << val << endl;
+}
+```
+
+#### 4.哈希集合,unordered_set
+
+```c++
+1. insert(val)
+2. erase(key)
 ```
 
 
