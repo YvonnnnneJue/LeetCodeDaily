@@ -76,6 +76,16 @@ for (auto& it : counter) {
   int val - it.second;
   cout << key << " " << val << endl;
 }
+初始化
+unordered_map<int, char> map = {
+    {1000, 'M'},
+    {500, 'D'},
+    {100, 'C'},
+    {50, 'L'},
+    {10, 'X'},
+    {5, 'V'},
+    {1, 'I'}
+};
 ```
 
 #### 4.哈希集合,unordered_set
