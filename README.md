@@ -2,7 +2,7 @@
 
 ### C++ 语言基础:
 
-#### 1. vector
+## 1. vector
 
 ```c++
 // initialize
@@ -52,7 +52,7 @@ std::iota(foo.begin(), foo.end(), 0);// 将从 0 开始的 n 次递增值赋值�
 // out: 0 1 2 3 .... 15
 ```
 
-#### 2. string
+## 2. string
 
 ```c++
 1. size()
@@ -60,9 +60,22 @@ std::iota(foo.begin(), foo.end(), 0);// 将从 0 开始的 n 次递增值赋值�
 3. push_back() // 尾部插入一个元素
 4. pop_back() // 删除尾部元素
 5. substr(pos, len) // 从索引pos开始, 长度为len的子字符串
+6. reserve(s.begin() //s.end()) 字符串翻转
+7. split 分割实现:
+       //C++ split
+        /**
+          string str = "dog cat cat dog";
+          words = ["dog", "cat", "cat", "dog"];
+        */
+        istringstream strs(str);
+        vector<string> words;
+        string word;
+        while(strs>>word){
+            words.push_back(word);
+        }
 ```
 
-#### 3. 哈希表,unordered_map
+## 3. 哈希表,unordered_map
 
 { key: value }, 一般使用int 或者 string 作为key;
 
